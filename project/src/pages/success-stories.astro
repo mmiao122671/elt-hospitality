@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Success Stories">
+  <div class="bg-primary text-white py-12">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl font-bold mb-4">Success Stories</h1>
+      <p class="text-xl">Meet our graduates and hear their stories</p>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Note: Replace with actual testimonials and images -->
+      <div class="bg-white p-8 rounded-lg shadow-md">
+        <div class="mb-6">
+          <h3 class="text-xl font-semibold">Sarah Chen</h3>
+          <p class="text-gray-600">Class of 2023</p>
+        </div>
+        <p class="mb-4">
+          "The ELT Hospitality program gave me the confidence and skills I needed to succeed. 
+          Now I'm working as a guest services supervisor at a leading hotel in Charlottetown."
+        </p>
+        <p class="text-secondary font-semibold">Currently: Guest Services Supervisor</p>
+      </div>
+
+      <div class="bg-white p-8 rounded-lg shadow-md">
+        <div class="mb-6">
+          <h3 class="text-xl font-semibold">Mohammed Ali</h3>
+          <p class="text-gray-600">Class of 2022</p>
+        </div>
+        <p class="mb-4">
+          "Thanks to the practical training and certifications I received, I was able to start 
+          my career in the restaurant industry. The language skills I learned are invaluable."
+        </p>
+        <p class="text-secondary font-semibold">Currently: Restaurant Manager</p>
+      </div>
+    </div>
+
+    <div class="mt-16">
+      <h2 class="text-3xl font-bold text-center mb-8">Student Showcase</h2>
+      <div class="max-w-3xl mx-auto">
+        <div class="aspect-video">
+          <iframe 
+            class="w-full h-full rounded-lg shadow-lg"
+            src="https://www.youtube.com/embed/4bV1N2JAVbM"
+            title="Student Showcase"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-16 text-center">
+      <h2 class="text-3xl font-bold mb-8">Join Our Success Story</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        Your journey to success in the hospitality industry starts here. 
+        Take the first step towards your career goals.
+      </p>
+      <a href="/apply" class="bg-secondary text-white px-8 py-3 rounded-full font-medium hover:bg-opacity-90">
+        Apply Now
+      </a>
+    </div>
+  </div>
+</Layout>
