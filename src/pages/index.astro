@@ -3,29 +3,30 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Welcome">
-  <div class="relative bg-primary text-white py-20">
-    <div class="absolute inset-0">
-      <img 
-        src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80"
-        alt="Hospitality background"
-        class="w-full h-full object-cover opacity-20"
-      />
+  <div class="relative">
+    <div class="w-full h-screen max-h-[800px]" id="slideshow">
+      <img src="/image/1.jpg" alt="Hospitality slide 1" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000" />
+      <img src="/image/2.jpg" alt="Hospitality slide 2" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 hidden" />
+      <img src="/image/3.jpg" alt="Hospitality slide 3" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 hidden" />
+      <img src="/image/4.jpg" alt="Hospitality slide 4" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 hidden" />
     </div>
-    <div class="container mx-auto px-4 relative">
-      <div class="max-w-2xl">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">
-          Welcome to ELT Hospitality Class
-        </h1>
-        <p class="text-xl mb-8">
-          Enhance your English language skills and prepare for a successful career in PEI's tourism industry.
-        </p>
-        <div class="space-x-4">
-          <a href="/about" class="bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors duration-300">
-            Learn More
-          </a>
-          <a href="/apply" class="bg-secondary text-white px-6 py-3 rounded-full font-medium hover:bg-opacity-90 transition-colors duration-300">
-            Apply Now
-          </a>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent">
+      <div class="container mx-auto px-4 h-full flex items-center">
+        <div class="max-w-2xl text-white">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">
+            Welcome to ELT Hospitality Class
+          </h1>
+          <p class="text-xl mb-8">
+            Enhance your English language skills and prepare for a successful career in PEI's tourism industry.
+          </p>
+          <div class="space-x-4">
+            <a href="/about" class="bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors duration-300">
+              Learn More
+            </a>
+            <a href="/apply" class="bg-secondary text-white px-6 py-3 rounded-full font-medium hover:bg-opacity-90 transition-colors duration-300">
+              Apply Now
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -69,7 +70,8 @@ import Layout from '../layouts/Layout.astro';
   <section class="py-16 bg-gray-100">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-12">Class Activity Highlights</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Initial 4 videos -->
         <div class="aspect-video">
           <iframe 
             class="w-full h-full rounded-lg shadow-lg"
@@ -110,6 +112,10 @@ import Layout from '../layouts/Layout.astro';
             allowfullscreen
           ></iframe>
         </div>
+      </div>
+
+      <!-- Hidden videos container -->
+      <div id="more-videos" class="hidden grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
         <div class="aspect-video">
           <iframe 
             class="w-full h-full rounded-lg shadow-lg"
@@ -120,6 +126,17 @@ import Layout from '../layouts/Layout.astro';
             allowfullscreen
           ></iframe>
         </div>
+        <!-- Add more videos here as needed -->
+      </div>
+
+      <!-- Show More button -->
+      <div class="text-center mt-8">
+        <button
+          id="show-more-btn"
+          class="bg-secondary text-white px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-colors duration-300"
+        >
+          Show More Videos
+        </button>
       </div>
     </div>
   </section>
@@ -136,3 +153,35 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 </Layout>
+
+<script>
+  function setupSlideshow() {
+    const images = document.querySelectorAll('#slideshow img');
+    let currentSlide = 0;
+
+    function showNextSlide() {
+      images[currentSlide].classList.add('hidden');
+      currentSlide = (currentSlide + 1) % images.length;
+      images[currentSlide].classList.remove('hidden');
+    }
+
+    setInterval(showNextSlide, 5000); // Change slide every 5 seconds
+  }
+
+  document.addEventListener('DOMContentLoaded', setupSlideshow);
+
+  // Add Show More functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const showMoreBtn = document.getElementById('show-more-btn');
+    const moreVideos = document.getElementById('more-videos');
+    let isExpanded = false;
+
+    if (showMoreBtn && moreVideos) {
+      showMoreBtn.addEventListener('click', () => {
+        isExpanded = !isExpanded;
+        moreVideos.classList.toggle('hidden');
+        showMoreBtn.textContent = isExpanded ? 'Show Less' : 'Show More Videos';
+      });
+    }
+  });
+</script>
