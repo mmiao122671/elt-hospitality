@@ -41,16 +41,86 @@ import Layout from '../layouts/Layout.astro';
 
     <div class="mt-16">
       <h2 class="text-3xl font-bold text-center mb-8">Student Showcase</h2>
-      <div class="max-w-3xl mx-auto">
-        <div class="aspect-video">
-          <iframe 
-            class="w-full h-full rounded-lg shadow-lg"
-            src="https://www.youtube.com/embed/4bV1N2JAVbM"
-            title="Student Showcase"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
+      
+      <!-- Year filters -->
+      <div class="flex justify-center gap-4 mb-8">
+        <button class="year-filter px-6 py-2 rounded-full bg-secondary text-white hover:bg-opacity-90 transition-all active" data-year="all">
+          All Years
+        </button>
+        <button class="year-filter px-6 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-all" data-year="2023">
+          2023
+        </button>
+        <button class="year-filter px-6 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-all" data-year="2022">
+          2022
+        </button>
+        <button class="year-filter px-6 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-all" data-year="2021">
+          2021
+        </button>
+        <button class="year-filter px-6 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-all" data-year="2020">
+          2020
+        </button>
+      </div>
+
+      <!-- Video grid -->
+      <div class="video-grid columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+        <!-- 2023 Videos -->
+        <div class="video-item break-inside-avoid mb-4" data-year="2023">
+          <div class="aspect-video">
+            <iframe 
+              class="w-full h-full rounded-lg shadow-lg"
+              src="https://www.youtube.com/embed/WWOB4zQ_tcE"
+              title="ELT Hospitality 2023"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <h3 class="mt-2 font-semibold">ELT Hospitality Class 2023</h3>
+        </div>
+
+        <!-- 2022 Videos -->
+        <div class="video-item break-inside-avoid mb-4" data-year="2022">
+          <div class="aspect-video">
+            <iframe 
+              class="w-full h-full rounded-lg shadow-lg"
+              src="https://www.youtube.com/embed/IcXw_If0MvU"
+              title="ELT Hospitality 2022"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <h3 class="mt-2 font-semibold">ELT Hospitality Class 2022</h3>
+        </div>
+
+        <!-- 2021 Videos -->
+        <div class="video-item break-inside-avoid mb-4" data-year="2021">
+          <div class="aspect-video">
+            <iframe 
+              class="w-full h-full rounded-lg shadow-lg"
+              src="https://www.youtube.com/embed/GsuaEmLeOPA"
+              title="ELT Hospitality 2021"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <h3 class="mt-2 font-semibold">ELT Hospitality Class 2021</h3>
+        </div>
+
+        <!-- 2020 Videos -->
+        <div class="video-item break-inside-avoid mb-4" data-year="2020">
+          <div class="aspect-video">
+            <iframe 
+              class="w-full h-full rounded-lg shadow-lg"
+              src="https://www.youtube.com/embed/4bV1N2JAVbM"
+              title="ELT Hospitality 2020"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <h3 class="mt-2 font-semibold">ELT Hospitality Class 2020</h3>
         </div>
       </div>
     </div>
@@ -67,3 +137,45 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </div>
 </Layout>
+
+<style>
+  .video-grid {
+    column-gap: 1rem;
+  }
+
+  .video-item {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .year-filter.active {
+    background-color: var(--color-secondary);
+    color: white;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.year-filter');
+    const videoItems = document.querySelectorAll('.video-item');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+
+        const year = button.getAttribute('data-year');
+
+        videoItems.forEach(item => {
+          if (year === 'all' || item.getAttribute('data-year') === year) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
