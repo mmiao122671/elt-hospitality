@@ -10,6 +10,10 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </div>
 
+  <!-- Add overlay and close button at the top level -->
+  <div id="video-overlay" class="fixed inset-0 bg-black bg-opacity-80 hidden z-50"></div>
+  <button id="close-video" class="fixed top-4 right-4 bg-white text-black rounded-full w-10 h-10 hidden z-50 text-2xl">&times;</button>
+
   <div class="container mx-auto px-4 py-12">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div class="bg-white p-8 rounded-lg shadow-md">
@@ -42,30 +46,25 @@ import Layout from '../layouts/Layout.astro';
     <div class="mt-16">
       <h2 class="text-3xl font-bold text-center mb-8">Student Showcase</h2>
       
-      <!-- Year filters -->
-      <div class="flex justify-center gap-4 mb-8">
-        <button class="year-filter px-6 py-2 rounded-full bg-secondary text-white hover:bg-opacity-90 transition-all active" data-year="all">
-          All Years
-        </button>
-        <button class="year-filter px-6 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-all" data-year="2023">
-          2023
-        </button>
-        <button class="year-filter px-6 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-all" data-year="2022">
-          2022
-        </button>
-        <button class="year-filter px-6 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-all" data-year="2021">
-          2021
-        </button>
-        <button class="year-filter px-6 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-all" data-year="2020">
-          2020
-        </button>
-      </div>
-
       <!-- Video grid -->
-      <div class="video-grid columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
-        <!-- 2023 Videos -->
-        <div class="video-item break-inside-avoid mb-4" data-year="2023">
-          <div class="aspect-video">
+      <div class="video-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Videos -->
+        <div class="video-container">
+          <div class="video-wrapper aspect-video cursor-pointer">
+            <iframe 
+              class="w-full h-full rounded-lg shadow-lg"
+              src="https://www.youtube.com/embed/z2ElA5Ycsvk"
+              title="ELT Hospitality 2025"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <h3 class="mt-2 font-semibold">ELT Hospitality Class 2025</h3>
+        </div>
+
+        <div class="video-container">
+          <div class="video-wrapper aspect-video cursor-pointer">
             <iframe 
               class="w-full h-full rounded-lg shadow-lg"
               src="https://www.youtube.com/embed/WWOB4zQ_tcE"
@@ -78,9 +77,8 @@ import Layout from '../layouts/Layout.astro';
           <h3 class="mt-2 font-semibold">ELT Hospitality Class 2023</h3>
         </div>
 
-        <!-- 2022 Videos -->
-        <div class="video-item break-inside-avoid mb-4" data-year="2022">
-          <div class="aspect-video">
+        <div class="video-container">
+          <div class="video-wrapper aspect-video cursor-pointer">
             <iframe 
               class="w-full h-full rounded-lg shadow-lg"
               src="https://www.youtube.com/embed/IcXw_If0MvU"
@@ -93,9 +91,8 @@ import Layout from '../layouts/Layout.astro';
           <h3 class="mt-2 font-semibold">ELT Hospitality Class 2022</h3>
         </div>
 
-        <!-- 2021 Videos -->
-        <div class="video-item break-inside-avoid mb-4" data-year="2021">
-          <div class="aspect-video">
+        <div class="video-container">
+          <div class="video-wrapper aspect-video cursor-pointer">
             <iframe 
               class="w-full h-full rounded-lg shadow-lg"
               src="https://www.youtube.com/embed/GsuaEmLeOPA"
@@ -108,9 +105,8 @@ import Layout from '../layouts/Layout.astro';
           <h3 class="mt-2 font-semibold">ELT Hospitality Class 2021</h3>
         </div>
 
-        <!-- 2020 Videos -->
-        <div class="video-item break-inside-avoid mb-4" data-year="2020">
-          <div class="aspect-video">
+        <div class="video-container">
+          <div class="video-wrapper aspect-video cursor-pointer">
             <iframe 
               class="w-full h-full rounded-lg shadow-lg"
               src="https://www.youtube.com/embed/4bV1N2JAVbM"
@@ -140,42 +136,112 @@ import Layout from '../layouts/Layout.astro';
 
 <style>
   .video-grid {
-    column-gap: 1rem;
+    position: relative;
   }
 
-  .video-item {
-    display: inline-block;
+  .video-container {
+    transition: all 0.3s ease;
+  }
+
+  .video-wrapper {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .video-wrapper.expanded {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    height: 80vh;
+    max-width: 1200px;
+    z-index: 51;
+  }
+
+  .video-wrapper.expanded iframe {
     width: 100%;
+    height: 100%;
   }
 
-  .year-filter.active {
-    background-color: var(--color-secondary);
-    color: white;
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+  }
+
+  .overlay.active {
+    display: block;
+  }
+
+  .close-button {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .close-button.active {
+    display: block;
   }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll('.year-filter');
-    const videoItems = document.querySelectorAll('.video-item');
+    const videoWrappers = document.querySelectorAll<HTMLDivElement>('.video-wrapper');
+    const overlay = document.getElementById('video-overlay');
+    const closeButton = document.getElementById('close-video');
+    let activeVideo: HTMLDivElement | null = null;
 
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        // Remove active class from all buttons
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        // Add active class to clicked button
-        button.classList.add('active');
+    if (!overlay || !closeButton) return;
 
-        const year = button.getAttribute('data-year');
+    function expandVideo(wrapper: HTMLDivElement) {
+      activeVideo = wrapper;
+      wrapper.classList.add('expanded');
+      overlay!.classList.remove('hidden');
+      closeButton!.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
 
-        videoItems.forEach(item => {
-          if (year === 'all' || item.getAttribute('data-year') === year) {
-            item.style.display = 'block';
-          } else {
-            item.style.display = 'none';
-          }
-        });
+    function collapseVideo() {
+      if (activeVideo) {
+        activeVideo.classList.remove('expanded');
+        activeVideo = null;
+      }
+      overlay!.classList.add('hidden');
+      closeButton!.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    videoWrappers.forEach(wrapper => {
+      wrapper.addEventListener('click', (e) => {
+        if (!wrapper.classList.contains('expanded')) {
+          expandVideo(wrapper);
+        }
       });
+    });
+
+    overlay.addEventListener('click', collapseVideo);
+    closeButton.addEventListener('click', collapseVideo);
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        collapseVideo();
+      }
     });
   });
 </script>
