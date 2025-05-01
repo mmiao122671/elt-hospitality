@@ -18,8 +18,9 @@ import Layout from '../layouts/Layout.astro';
   </div>
 
   <div class="container mx-auto px-4 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-      <div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Program Overview Section -->
+      <div class="lg:col-span-2">
         <h2 class="text-2xl font-bold mb-6">Program Overview</h2>
         <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
           <img
@@ -28,38 +29,72 @@ import Layout from '../layouts/Layout.astro';
             class="w-full h-64 object-cover"
           />
           <div class="p-6">
-            <p class="mb-4">Holland College’s Community Education ELT Hospitality Program provides new immigrants to Canada (Levels 4+ with permanent resident status or Ukrainians under the CUAET pathway) with the opportunity to combine learning English and learning essential skills to help integrate them into the Prince Edward Island Tourism workplace.  Classes will be held from September 2024 to June 2025 at Holland College Belmont Centre in Charlottetown.</p>
-
+            <p class="mb-4">Holland College's Community Education ELT Hospitality Program provides new immigrants to Canada (Levels 4+ with permanent resident status or Ukrainians under the CUAET pathway) with the opportunity to combine learning English and learning essential skills to help integrate them into the Prince Edward Island Tourism workplace. Classes will be held from September 2024 to June 2025 at Holland College Belmont Centre in Charlottetown.</p>
           </div>
         </div>
 
-        <h3 class="text-xl font-semibold mt-8 mb-4">Program Benefits</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <img
-              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=300"
-              alt="Language training"
-              class="w-full h-40 object-cover rounded-lg mb-4"
-            />
-            <ul class="list-disc list-inside space-y-2 text-gray-700">
-              <li>Enhanced English proficiency</li>
-              <li>Industry-specific training</li>
-            </ul>
+        <!-- Program Objectives Section -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+          <h3 class="text-xl font-bold mb-4">Program Objectives</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold text-primary mb-3">Language & Communication</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li>Enhanced English proficiency in all four CLB areas:
+                  <ul class="list-disc list-inside ml-4">
+                    <li>Reading</li>
+                    <li>Writing</li>
+                    <li>Listening</li>
+                    <li>Speaking</li>
+                  </ul>
+                </li>
+                <li>Excellent customer service skills</li>
+                <li>Improved communication abilities</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold text-primary mb-3">Practical Experience</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li>PEI tourism knowledge and tour guiding</li>
+                <li>Hands-on restaurant training</li>
+                <li>Customer service practice in New-to-You Shop</li>
+                <li>Two-week job shadow opportunity</li>
+                <li>School lunch program participation</li>
+                <li>Tourism event planning experience</li>
+              </ul>
+            </div>
           </div>
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <img
-              src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=300"
-              alt="Practical experience"
-              class="w-full h-40 object-cover rounded-lg mb-4"
-            />
-            <ul class="list-disc list-inside space-y-2 text-gray-700">
-              <li>Hands-on practical experience</li>
-              <li>Professional certifications</li>
-            </ul>
+        </div>
+
+        <!-- Certifications & Training Section -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-xl font-bold mb-4">Certifications & Training</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold text-primary mb-3">Industry Certifications</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li>EMERIT National Tourism Skills</li>
+                <li>PEI Best Service Training Program</li>
+                <li>Food Safety Certification</li>
+                <li>WHMIS Certification</li>
+                <li>Standard First Aid and CPR/AED Training Level C</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold text-primary mb-3">Additional Training</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li>Employment Standards Workshop</li>
+                <li>Human Rights Training</li>
+                <li>Resume and Cover Letter Writing</li>
+                <li>Restaurant Serving Skills</li>
+                <li>Bus Familiarization Tour of P.E.I.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
 
+      <!-- Right Column - Instructor & Schedule -->
       <div>
         <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
           <div class="text-center mb-6">
