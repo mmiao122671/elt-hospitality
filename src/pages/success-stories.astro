@@ -3,43 +3,78 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Success Stories">
-  <div class="bg-primary text-white py-12">
-    <div class="container mx-auto px-4">
+  <div class="relative bg-primary text-white py-12">
+    <div class="absolute inset-0">
+      <img 
+        src="/image/success-header.jpg"
+        alt="Success Stories"
+        class="w-full h-full object-cover opacity-20"
+      />
+    </div>
+    <div class="container mx-auto px-4 relative">
       <h1 class="text-4xl font-bold mb-4">Success Stories</h1>
-      <p class="text-xl">Meet our graduates and hear their stories</p>
+      <p class="text-xl">Meet our graduates and their inspiring journeys</p>
     </div>
   </div>
 
-  <!-- Add overlay and close button at the top level -->
-  <div id="video-overlay" class="fixed inset-0 bg-black bg-opacity-80 hidden z-50"></div>
-  <button id="close-video" class="fixed top-4 right-4 bg-white text-black rounded-full w-10 h-10 hidden z-50 text-2xl">&times;</button>
-
   <div class="container mx-auto px-4 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="bg-white p-8 rounded-lg shadow-md">
-        <img src="/image/6.jpg" alt="Success Story 1" class="w-full h-64 object-cover rounded-lg mb-6" />
-        <div class="mb-6">
-          <h3 class="text-xl font-semibold">Sarah Chen</h3>
-          <p class="text-gray-600">Class of 2023</p>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <!-- Runhua Zhou Story -->
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="relative group cursor-pointer lightbox-trigger">
+          <img 
+            src="/image/runhua.jpg" 
+            alt="Runhua Zhou"
+            class="w-full h-[600px] object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          />
+          <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span class="text-white text-lg">Click to enlarge</span>
+          </div>
         </div>
-        <p class="mb-4">
-          "The ELT Hospitality program gave me the confidence and skills I needed to succeed. 
-          Now I'm working as a guest services supervisor at a leading hotel in Charlottetown."
-        </p>
-        <p class="text-secondary font-semibold">Currently: Guest Services Supervisor</p>
+        <div class="p-8">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-800">Runhua Zhou</h2>
+              <p class="text-gray-600">Class of ELT 2017-2018</p>
+            </div>
+            <span class="bg-secondary text-white px-4 py-2 rounded-full text-sm">Banquet Captain</span>
+          </div>
+          <p class="text-gray-700 mb-6">
+            Runhua Zhou went to the Rodd Charlottetown for her job shadow as a banquet server and she was hired! After doing that job for a short time, she was promoted to Banquet Captain. In April 2025, she was the Champion of the Month at the Rodd Charlottetown.
+          </p>
+          <div class="border-l-4 border-secondary pl-4 italic text-gray-600">
+            "Her positivity, dependability, and leadership make her truly deserving of this recognition. She's never missed a shift, always supports her team, and plays a key role in every event's success."
+          </div>
+        </div>
       </div>
 
-      <div class="bg-white p-8 rounded-lg shadow-md">
-        <img src="/image/8.jpg" alt="Success Story 2" class="w-full h-64 object-cover rounded-lg mb-6" />
-        <div class="mb-6">
-          <h3 class="text-xl font-semibold">Yun Bai</h3>
-          <p class="text-gray-600">Class of 2022</p>
+      <!-- Fereshteh Shabestani Story -->
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="relative group cursor-pointer lightbox-trigger">
+          <img 
+            src="/image/fereshteh.jpg" 
+            alt="Fereshteh Shabestani"
+            class="w-full h-[600px] object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          />
+          <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span class="text-white text-lg">Click to enlarge</span>
+          </div>
         </div>
-        <p class="mb-4">
-          "Thanks to the practical training and certifications I received, I was able to start 
-          my career in the restaurant industry. The language skills I learned are invaluable."
-        </p>
-        <p class="text-secondary font-semibold">Currently: Restaurant Manager</p>
+        <div class="p-8">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-800">Fereshteh Shabestani</h2>
+              <p class="text-gray-600">Class of ELT 2022-2023</p>
+            </div>
+            <span class="bg-secondary text-white px-4 py-2 rounded-full text-sm">Pastry Chef</span>
+          </div>
+          <p class="text-gray-700 mb-6">
+            Fereshteh Shabestani became a pastry chef at Red Shores shortly after she left the ELT class. She appreciated the portfolio she built in the class and felt prepared when she went to the interview.
+          </p>
+          <div class="border-l-4 border-secondary pl-4 italic text-gray-600">
+            "Now she is the pastry chef at Dalvay-By-the-Sea Hotel where she creates delightful desserts to satisfy and impress all the guests at this historic hotel in the PEI National Park."
+          </div>
+        </div>
       </div>
     </div>
 
@@ -74,7 +109,7 @@ import Layout from '../layouts/Layout.astro';
               allowfullscreen
             ></iframe>
           </div>
-          <h3 class="mt-2 font-semibold">ELT Hospitality Class 2023</h3>
+          <h3 class="mt-2 font-semibold">ELT Hospitality Class 2024</h3>
         </div>
 
         <div class="video-container">
@@ -116,7 +151,7 @@ import Layout from '../layouts/Layout.astro';
               allowfullscreen
             ></iframe>
           </div>
-          <h3 class="mt-2 font-semibold">ELT Hospitality Class 2020</h3>
+          <h3 class="mt-2 font-semibold">ELT Hospitality Class 2023</h3>
         </div>
       </div>
     </div>
@@ -132,7 +167,58 @@ import Layout from '../layouts/Layout.astro';
       </a>
     </div>
   </div>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="fixed inset-0 bg-black/90 hidden z-50">
+    <button id="closeLightbox" class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300">&times;</button>
+    <img id="lightboxImage" class="max-w-[90vw] max-h-[90vh] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" src="" alt="Enlarged image" />
+  </div>
 </Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage') as HTMLImageElement;
+    const closeLightbox = document.getElementById('closeLightbox');
+    const triggers = document.querySelectorAll('.lightbox-trigger');
+
+    if (!lightbox || !lightboxImage || !closeLightbox) return;
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const img = trigger.querySelector('img') as HTMLImageElement;
+        if (img) {
+          lightboxImage.src = img.src;
+          lightboxImage.alt = img.alt;
+          lightbox.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    // Close lightbox when clicking the close button
+    closeLightbox.addEventListener('click', () => {
+      lightbox.classList.add('hidden');
+      document.body.style.overflow = '';
+    });
+
+    // Close lightbox when clicking outside the image
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Close lightbox when pressing Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+        lightbox.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+</script>
 
 <style>
   .video-grid {
@@ -198,50 +284,12 @@ import Layout from '../layouts/Layout.astro';
   .close-button.active {
     display: block;
   }
+
+  .lightbox-trigger {
+    cursor: zoom-in;
+  }
+
+  #lightboxImage {
+    cursor: zoom-out;
+  }
 </style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const videoWrappers = document.querySelectorAll<HTMLDivElement>('.video-wrapper');
-    const overlay = document.getElementById('video-overlay');
-    const closeButton = document.getElementById('close-video');
-    let activeVideo: HTMLDivElement | null = null;
-
-    if (!overlay || !closeButton) return;
-
-    function expandVideo(wrapper: HTMLDivElement) {
-      activeVideo = wrapper;
-      wrapper.classList.add('expanded');
-      overlay!.classList.remove('hidden');
-      closeButton!.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function collapseVideo() {
-      if (activeVideo) {
-        activeVideo.classList.remove('expanded');
-        activeVideo = null;
-      }
-      overlay!.classList.add('hidden');
-      closeButton!.classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-
-    videoWrappers.forEach(wrapper => {
-      wrapper.addEventListener('click', (e) => {
-        if (!wrapper.classList.contains('expanded')) {
-          expandVideo(wrapper);
-        }
-      });
-    });
-
-    overlay.addEventListener('click', collapseVideo);
-    closeButton.addEventListener('click', collapseVideo);
-    
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        collapseVideo();
-      }
-    });
-  });
-</script>
