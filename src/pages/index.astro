@@ -5,10 +5,10 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Welcome">
   <div class="relative">
     <div class="w-full h-screen max-h-[800px]" id="slideshow">
-      <img src="/image/1.jpg" alt="Hospitality slide 1" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000" />
-      <img src="/image/2.jpg" alt="Hospitality slide 2" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 hidden" />
-      <img src="/image/3.jpg" alt="Hospitality slide 3" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 hidden" />
-      <img src="/image/4.jpg" alt="Hospitality slide 4" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 hidden" />
+      <img src="/image/1.jpg" alt="Hospitality slide 1" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-500" />
+      <img src="/image/2.jpg" alt="Hospitality slide 2" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-500 hidden" />
+      <img src="/image/3.jpg" alt="Hospitality slide 3" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-500 hidden" />
+      <img src="/image/4.jpg" alt="Hospitality slide 4" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-500 hidden" />
     </div>
     <div class="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent">
       <div class="container mx-auto px-4 h-full flex items-center">
@@ -272,7 +272,7 @@ import Layout from '../layouts/Layout.astro';
       images[currentSlide].classList.remove('hidden');
     }
 
-    setInterval(showNextSlide, 5000); // Change slide every 5 seconds
+    setInterval(showNextSlide, 3000); // Change slide every 3 seconds
   }
 
   document.addEventListener('DOMContentLoaded', setupSlideshow);
